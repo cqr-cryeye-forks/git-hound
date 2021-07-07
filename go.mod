@@ -1,4 +1,4 @@
-module github.com/tillson/git-hound
+module github.com/cqr-cryeye-forks/git-hound
 
 go 1.12
 
