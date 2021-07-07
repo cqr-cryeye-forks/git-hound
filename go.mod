@@ -1,4 +1,4 @@
-module github.com/cqr-cryeye-forks/git-hound
+module github.com/tillson/git-hound
 
 go 1.12
 
@@ -16,4 +16,4 @@ require (
 	gopkg.in/src-d/go-git.v4 v4.13.1 // indirect
 )
 
-replace github.com/tillson/git-hound => github.com/cqr-cryeye-forks/git-hound v999
+replace github.com/tillson/git-hound => github.com/cqr-cryeye-forks/git-hound v1.2.1
