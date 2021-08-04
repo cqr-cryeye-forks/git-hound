@@ -1,4 +1,4 @@
-module github.com/tillson/git-hound
+module git-hound
 
 go 1.12
 
@@ -15,5 +15,3 @@ require (
 	golang.org/x/crypto v0.0.0-20200302210943-78000ba7a073
 	gopkg.in/src-d/go-git.v4 v4.13.1 // indirect
 )
-
-replace github.com/tillson/git-hound => github.com/cqr-cryeye-forks/git-hound v1.2.1

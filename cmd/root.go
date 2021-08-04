@@ -12,7 +12,7 @@ import (
 	"strings"
 
 	"github.com/spf13/cobra"
-	"github.com/cqr-cryeye-forks/git-hound/internal/app"
+	"git-hound/internal/app"
 )
 
 // InitializeFlags initializes GitHound's command line flags.

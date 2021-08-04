@@ -8,7 +8,8 @@ import (
 	"net/http"
 	"regexp"
 	"strings"
-
+    "encoding/json"
+	"io/ioutil"
 	"github.com/fatih/color"
 )
 
@@ -36,6 +37,15 @@ type Line struct {
 	MatchEndIndex int
 }
 
+type Data struct {
+    RepoUrl, Context, Pattern, KeywordType, ResultLink string
+}
+
+type Output struct {
+    Data []Data
+}
+var items = []Data{}
+var output = Output{ Data: items,}
 var scannedRepos = make(map[string]bool)
 var apiKeyMap = make(map[string]bool)
 
@@ -82,7 +92,23 @@ func ScanAndPrintResult(client *http.Client, repo RepoSearchResult) {
 				PrintKeywordType(result)
 				PrintResultLink(repo, result)
 			}
+			var resultUrl string
+			if result.Commit != "" {
+                resultUrl = ("https://github.com/" + repo.Repo + "/commit/" + result.Commit)
+            } else {
+                resultUrl = repo.URL
+            }
+			data := Data{
+                RepoUrl: GetRepoURLForSearchResult(repo),
+                Context: (result.Line.Text[:result.Line.MatchIndex] + result.Line.Text[result.Line.MatchIndex:result.Line.MatchEndIndex] + result.Line.Text[result.Line.MatchEndIndex:]),
+                Pattern: result.Expression,
+                KeywordType: result.KeywordType,
+                ResultLink: resultUrl,
+            }
+            output.Data = append(output.Data, data)
 		}
+        file, _ := json.MarshalIndent(output, "", " ")
+        _ = ioutil.WriteFile("test.json", file, 0644)
 	}
 }
 

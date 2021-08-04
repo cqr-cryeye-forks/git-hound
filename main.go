@@ -3,7 +3,7 @@ package main
 import (
 	_ "net/http/pprof"
 
-	"github.com/cqr-cryeye-forks/git-hound/cmd"
+	"git-hound/cmd"
 )
 
 func main() {

@@ -3,7 +3,7 @@ package tests
 import (
 	"testing"
 
-	"github.com/cqr-cryeye-forks/git-hound/internal/app"
+	"git-hound/internal/app"
 )
 
 func TestMatchKeywords(t *testing.T) {
